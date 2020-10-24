@@ -5,7 +5,9 @@ package clase23mayoact;
  *
  * @author Angonoa Franco
  * @since Mayo 2020
- * @version 1.0
+ * @version 1.1
+ * 1.0 Inicial
+ * 1.1 Agregado de otra resolucion
  */
 public class Principal {
 
@@ -26,7 +28,7 @@ public class Principal {
         Persona per2 = new Persona(64547, "Lucas Herrador", new Documento(38547851, "DNI"), 0, 0); //Esta persona es de Argentina(0), Cordoba(0)
 
         //Los demas objetos se crearan con la segunda forma.
-        Persona per3 = new Persona(63258, "Candela Salazar", new Documento(39874521, "DNI"), 1, 2) ; //Esta persona es de Chile(1), Concepcion(2)
+        Persona per3 = new Persona(63258, "Candela Salazar", new Documento(39874521, "DNI"), 1, 2); //Esta persona es de Chile(1), Concepcion(2)
         Persona per4 = new Persona(61254, "Nadia López", new Documento(39458741, "DNI"), 2, 3);  //Esta persona es de Uruguay(2), Paysandu(3)
         Persona per5 = new Persona(62147, "Santiago Staricco", new Documento(35147852, "DNI"), 1, 2);  //Esta persona es de Chile(1), Concepcion(2)
         Persona per6 = new Persona(61478, "Jorge Nogueira", new Documento(36587452, "DNI"), 0, 2);  //Esta persona es de Argentina(0), Buenos Aires(2)
@@ -39,19 +41,19 @@ public class Principal {
         /*
             ACTIVIDAD 4: Contamos la cantidad de gente segun su país y su ciudad.
          */
-        int[][] origen = new int[3][4];
+        int[][] origen1 = new int[3][4];
 
         //Con este for contamos segun su pais y ciudad.         
         for (Persona elemPer : personas) {
             int pais = elemPer.getPais();
             int ciud = elemPer.getCiudad();
-            origen[pais][ciud]++;
+            origen1[pais][ciud]++;
         }
 
         //Mostramos la matriz:
         //FORMA 1: con for mejorados.
         System.out.println("Ciud0\tCiud1\tCiud2\tCiud3");
-        for (int[] vectFila : origen) {
+        for (int[] vectFila : origen1) {
             for (int valorColum : vectFila) {
                 System.out.print(valorColum + "\t");
             }
@@ -60,16 +62,30 @@ public class Principal {
         }
 
         System.out.println("\n");
+
+        /*
+            Cambiamos la forma de verlo. Primero ciudades y despues paises,
+            tal cual figura en las filminas.
+         */
+        
+        int[][] origen2 = new int[4][3];
+        
+        for (Persona elemPer : personas) {
+            int ciud = elemPer.getCiudad();
+            int pais = elemPer.getPais();            
+            origen2[ciud][pais]++;
+        }
         
         //FORMA 2: con for normales.
-        System.out.println("C1C2C3C4");
-        for (int pais = 0; pais < origen.length; pais++) {
+        System.out.println("ARG\tCHILE\tURUGUAY");
+        for (int i = 0; i < origen2.length; i++) {
+            //i: representa la ciudad
 
-            for (int ciudad = 0; ciudad < origen[pais].length; ciudad++) {
-
-                System.out.print(origen[pais][ciudad] + " ");
+            for (int j = 0; j < origen2[j].length; j++) {
+                //j: representa el pais
+                System.out.print(origen2[i][j] + "\t");
             }
-            System.out.print(" - Pais " + pais);
+            System.out.print(" - Ciudad " + i);
             System.out.println("");
         }
     } //Fin del metodo main
